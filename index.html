@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Doctor Vessel — формула поддержки сосудов</title>
+<meta name="description" content="Doctor Vessel — тройная формула поддержки сосудов. Автор — сосудистый хирург, ДМН Богдан Олейник.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf8f4;
+    --paper:#ffffff;
+    --ink:#1b1a17;
+    --ink2:#5c584f;
+    --ink3:#8a8579;
+    --accent:#8f2d2b;
+    --accent-ink:#ffffff;
+    --line:#e8e2d6;
+    --chip:#f2ede2;
+    --radius:18px;
+    --wrap:640px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-0.01em;margin:0}
+  section{padding:56px 0}
+  .lab{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:.02em;color:var(--ink2);
+    background:var(--chip);border-radius:999px;padding:7px 14px;
+    margin-bottom:18px;
+  }
+  .lab::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+  /* HERO */
+  .hero{padding:44px 0 40px;background:var(--paper);border-bottom:1px solid var(--line)}
+  .doc-photo{
+    width:100%;aspect-ratio:4/4.2;object-fit:cover;object-position:top center;
+    border-radius:var(--radius);
+    box-shadow:0 24px 48px -28px rgba(30,20,10,.35);
+  }
+  .hero h1{font-size:30px;line-height:1.22;margin:22px 0 12px;}
+  .hero .sub{font-size:16.5px;line-height:1.5;color:var(--ink2);margin:0 0 26px}
+  .price-note{font-size:13.5px;color:var(--ink3);margin-top:12px;text-align:center}
+
+  /* BUTTONS */
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;padding:16px 20px;border-radius:14px;
+    font-family:'Inter';font-size:16px;font-weight:600;
+    text-decoration:none;border:1px solid transparent;
+    transition:transform .15s ease;
+  }
+  .btn:active{transform:scale(.98)}
+  .btn-primary{background:var(--accent);color:var(--accent-ink)}
+  .btn-ghost{background:var(--paper);color:var(--ink);border-color:var(--line)}
+  .btn-row{display:flex;flex-direction:column;gap:12px}
+  @media(min-width:560px){
+    .btn-row.two{flex-direction:row}
+    .btn-row.two .btn{flex:1}
+  }
+
+  /* SYMPTOMS */
+  .sym-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:28px 0 30px}
+  @media(min-width:520px){.sym-grid{grid-template-columns:1fr 1fr}}
+  .sym{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:18px 18px 16px;
+  }
+  .sym b{display:block;font-size:16px;margin-bottom:4px}
+  .sym p{margin:0;font-size:14px;color:var(--ink2);line-height:1.45}
+
+  /* COMPONENTS */
+  .comp{
+    background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 20px;margin-bottom:14px;
+  }
+  .comp .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:30px;height:30px;border-radius:50%;background:var(--chip);
+    font-size:13px;font-weight:700;color:var(--accent);margin-bottom:12px;
+  }
+  .comp h3{font-size:19px;margin-bottom:4px}
+  .comp .mg{font-size:13px;color:var(--ink3);margin-bottom:10px}
+  .comp ul{margin:0;padding-left:18px;color:var(--ink2);font-size:14.5px;line-height:1.55}
+  .comp ul li{margin-bottom:3px}
+  .footnote{font-size:13px;color:var(--ink3);line-height:1.5;margin-top:18px}
+
+  /* TRUST */
+  .grey{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .rate-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:26px 0 24px}
+  .rate{
+    background:var(--bg);border:1px solid var(--line);border-radius:16px;
+    padding:20px 16px;text-align:center;
+  }
+  .rate .n{font-family:'Fraunces';font-size:34px;font-weight:600;color:var(--accent);line-height:1}
+  .rate .cnt{font-size:13px;color:var(--ink2);margin:6px 0 12px}
+  .rate a{font-size:13px;color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+  .stat{background:var(--bg);border-radius:14px;padding:16px 14px;border:1px solid var(--line)}
+  .stat .p{font-family:'Fraunces';font-size:26px;font-weight:600}
+  .stat .d{font-size:13px;color:var(--ink2);margin-top:4px;line-height:1.35}
+  .survey-note{font-size:12.5px;color:var(--ink3);margin-top:14px;line-height:1.5}
+
+  /* DOSAGE */
+  .jar-wrap{background:var(--chip);border-radius:20px;padding:18px 10px 4px;margin:26px 0 22px;text-align:center}
+  .dose-list{list-style:none;margin:0 0 24px;padding:0}
+  .dose-list li{
+    display:flex;justify-content:space-between;gap:12px;
+    padding:13px 0;border-bottom:1px solid var(--line);font-size:14.5px;
+  }
+  .dose-list li:last-child{border-bottom:none}
+  .dose-list b{color:var(--ink);font-weight:600;flex-shrink:0}
+  .dose-list span{color:var(--ink2);text-align:right}
+  .price-block{
+    display:flex;align-items:baseline;gap:10px;justify-content:center;
+    margin:22px 0 18px;
+  }
+  .price-block .now{font-family:'Fraunces';font-size:40px;font-weight:600}
+  .price-block .old{font-size:18px;color:var(--ink3);text-decoration:line-through}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--line);padding:18px 0}
+  .faq-item:first-child{padding-top:0}
+  .faq-item summary{
+    list-style:none;cursor:pointer;font-size:16px;font-weight:600;
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:"+";font-size:22px;color:var(--accent);font-weight:400;flex-shrink:0}
+  .faq-item[open] summary::after{content:"–"}
+  .faq-item p{margin:12px 0 0;font-size:14.5px;line-height:1.55;color:var(--ink2)}
+
+  /* FOOTER */
+  footer{padding:44px 0 60px;background:var(--ink);color:#cfc9bd}
+  footer .wrap{font-size:13.5px;line-height:1.6}
+  footer a{color:#f0ece2}
+  footer .ask{display:flex;gap:10px;margin:18px 0 26px;flex-wrap:wrap}
+  footer .ask a{
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+    border-radius:10px;padding:10px 16px;text-decoration:none;font-size:14px;
+  }
+  footer .legal{color:#8f8a7d;font-size:12px;margin-top:22px;line-height:1.6}
+  footer .warn{
+    margin-top:20px;padding:14px 16px;border-radius:12px;
+    background:rgba(143,45,43,.18);font-size:12.5px;line-height:1.5;color:#e8d6d0;
+  }
+
+  h2.title{font-size:26px;line-height:1.24;margin-bottom:8px}
+  .lead{font-size:15.5px;color:var(--ink2);line-height:1.5;margin:0 0 6px}
+</style>
+</head>
+<body>
+
+<!-- 1 · ГЕРОЙ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="lab">Богдан Олейник · сосудистый хирург, ДМН, профессор</div>
+    <img class="doc-photo" src="img/doctor.jpg" alt="Богдан Олейник, сосудистый хирург">
+    <h1>Большинство БАДов работают с симптомами сосудистых проблем. Doctor Vessel — работает с их причиной.</h1>
+    <p class="sub">Первый в России комплекс для поддержки сосудов на всех уровнях.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://www.ozon.ru/product/doctor-vessel-doktor-vessel-formula-podderzhki-sosudov-kompleksnaya-podderzhka-zdorovya-serdechno-2628980064/" target="_blank" rel="noopener">Смотреть на Ozon — 1790 ₽</a>
+    </div>
+    <p class="price-note">Тоже есть на Wildberries и на doctorvessel.ru</p>
+  </div>
+</section>
+
+<!-- 2 · ДЛЯ КОГО -->
+<section>
+  <div class="wrap">
+    <div class="lab">Для кого</div>
+    <h2 class="title">Когда стоит задуматься о Doctor Vessel</h2>
+    <p class="lead">Эти симптомы часто связаны с нарушением микроциркуляции и состоянием сосудов.</p>
+    <div class="sym-grid">
+      <div class="sym"><b>«Туман» в голове</b><p>Сложно сосредоточиться, ощущение ватной головы</p></div>
+      <div class="sym"><b>Холодные руки и ноги</b><p>Даже когда вы находитесь в тепле</p></div>
+      <div class="sym"><b>Снижение мужской силы</b><p>После нагрузок и стресса</p></div>
+      <div class="sym"><b>Метеозависимость</b><p>Головные боли, слабость, скачки самочувствия</p></div>
+      <div class="sym"><b>Постоянная усталость</b><p>Нехватка энергии даже для простых задач</p></div>
+      <div class="sym"><b>Скачки давления</b><p>Резкое повышение или понижение</p></div>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://www.ozon.ru/product/doctor-vessel-doktor-vessel-formula-podderzhki-sosudov-kompleksnaya-podderzhka-zdorovya-serdechno-2628980064/" target="_blank" rel="noopener">Смотреть на Ozon</a>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · СОСТАВ -->
+<section class="grey">
+  <div class="wrap">
+    <div class="lab">Что внутри</div>
+    <h2 class="title">Тройная формула</h2>
+    <p class="lead">Почему нельзя обойтись одним компонентом.</p>
+    <div style="margin-top:24px">
+      <div class="comp">
+        <div class="num">1</div>
+        <h3>Фукоидан</h3>
+        <div class="mg">60 мг · защищает изнутри</div>
+        <ul>
+          <li>способствует восстановлению гликокаликса — защитного слоя сосудов</li>
+          <li>помогает защитить сосудистую стенку от холестерина</li>
+          <li>создаёт условия для выработки оксида азота (NO)</li>
+        </ul>
+      </div>
+      <div class="comp">
+        <div class="num">2</div>
+        <h3>L-Цитруллин</h3>
+        <div class="mg">500 мг · даёт материал</div>
+        <ul>
+          <li>служит источником для синтеза оксида азота</li>
+          <li>помогает сосудам вырабатывать достаточное количество NO</li>
+          <li>поддерживает нормальное расширение сосудов и кровоток</li>
+        </ul>
+      </div>
+      <div class="comp">
+        <div class="num">3</div>
+        <h3>Ресвератрол</h3>
+        <div class="mg">100 мг · активирует выработку NO</div>
+        <ul>
+          <li>активирует фермент eNOS, отвечающий за синтез NO</li>
+          <li>помогает защитить молекулы NO от разрушения</li>
+          <li>снижает сосудистое воспаление</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footnote">Основано на самых востребованных в США формулах для поддержки эндотелия и гликокаликса.</p>
+  </div>
+</section>
+
+<!-- 4 · ДОВЕРИЕ -->
+<section>
+  <div class="wrap">
+    <div class="lab">Отзывы</div>
+    <h2 class="title">Что говорят те, кто уже попробовал</h2>
+    <div class="rate-row">
+      <div class="rate">
+        <div class="n">4,8</div>
+        <div class="cnt">548 оценок на Ozon</div>
+        <a href="https://www.ozon.ru/product/doctor-vessel-doktor-vessel-formula-podderzhki-sosudov-kompleksnaya-podderzhka-zdorovya-serdechno-2628980064/reviews/" target="_blank" rel="noopener">смотреть отзывы →</a>
+      </div>
+      <div class="rate">
+        <div class="n">4,9</div>
+        <div class="cnt">284 оценки на Wildberries</div>
+        <a href="https://www.wildberries.ru/catalog/629537105/detail.aspx" target="_blank" rel="noopener">смотреть отзывы →</a>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:30px">Опрос 108 покупателей Doctor Vessel:</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="p">76%</div><div class="d">отметили прилив энергии и снижение усталости</div></div>
+      <div class="stat"><div class="p">72%</div><div class="d">почувствовали более стабильное самочувствие в течение дня</div></div>
+      <div class="stat"><div class="p">64%</div><div class="d">мужчин отметили улучшение качества эрекции</div></div>
+      <div class="stat"><div class="p">63%</div><div class="d">перестали постоянно мёрзнуть</div></div>
+      <div class="stat"><div class="p">51%</div><div class="d">заметили снижение «тумана» в голове</div></div>
+      <div class="stat"><div class="p">58%</div><div class="d">легче переносят физические и умственные нагрузки</div></div>
+    </div>
+    <p class="survey-note">Результаты опроса пользователей Doctor Vessel. Результаты индивидуальны.</p>
+  </div>
+</section>
+
+<!-- 5 · ПРИЁМ И ЦЕНА -->
+<section class="grey">
+  <div class="wrap">
+    <div class="lab">Как принимать</div>
+    <h2 class="title">Курс на месяц — 60 капсул</h2>
+    <div class="jar-wrap">
+      <img src="img/jar.png" alt="Упаковка Doctor Vessel" style="max-width:340px;margin:0 auto">
+    </div>
+    <ul class="dose-list">
+      <li><b>Упаковка</b><span>60 капсул — курс на 1 месяц</span></li>
+      <li><b>Приём</b><span>2 капсулы в день</span></li>
+      <li><b>Состав на день</b><span>Фукоидан 60 мг, L-Цитруллин 500 мг, Ресвератрол 100 мг</span></li>
+      <li><b>Курс</b><span>2 месяца, 2 раза в год</span></li>
+      <li><b>Производство</b><span>Ленинградская область, HACCP и ISO, «Честный знак»</span></li>
+    </ul>
+    <div class="price-block">
+      <span class="now">1790 ₽</span>
+      <span class="old">1990 ₽</span>
+    </div>
+    <div class="btn-row two">
+      <a class="btn btn-primary" href="https://www.ozon.ru/product/doctor-vessel-doktor-vessel-formula-podderzhki-sosudov-kompleksnaya-podderzhka-zdorovya-serdechno-2628980064/" target="_blank" rel="noopener">Заказать на Ozon</a>
+      <a class="btn btn-ghost" href="https://www.wildberries.ru/catalog/629537105/detail.aspx" target="_blank" rel="noopener">Заказать на Wildberries</a>
+    </div>
+    <p class="price-note">Или на официальном сайте <a href="https://doctorvessel.ru/" target="_blank" rel="noopener" style="color:var(--ink)">doctorvessel.ru</a></p>
+  </div>
+</section>
+
+<!-- 6 · ВОПРОСЫ -->
+<section>
+  <div class="wrap">
+    <div class="lab">Вопросы</div>
+    <h2 class="title">Часто спрашивают</h2>
+    <div style="margin-top:20px">
+      <details class="faq-item" open>
+        <summary>Это лекарство?</summary>
+        <p>Нет, это биологически активная добавка для поддержки сосудов.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Когда будет эффект?</summary>
+        <p>Первые изменения многие замечают через 2–3 недели. Для устойчивого эффекта рекомендован курс от 2 месяцев.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Можно принимать постоянно?</summary>
+        <p>Да, формула безопасна для длительного приёма. Рекомендуем курсами: 2 месяца приёма 2 раза в год.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Сочетается с лекарствами?</summary>
+        <p>Да, но при хронических заболеваниях лучше проконсультироваться с врачом.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Где производится Doctor Vessel?</summary>
+        <p>В России, в Ленинградской области. Производство соответствует стандартам HACCP и ISO, продукт промаркирован «Честным знаком».</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div style="font-family:'Fraunces';font-size:18px;color:#fff;margin-bottom:6px">Doctor Vessel</div>
+    <div>Остались вопросы по составу или приёму — можно написать врачу напрямую.</div>
+    <div class="ask">
+      <a href="https://telegram.me/DoctorVessel_bot" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://max.ru/id0278974239_bot" target="_blank" rel="noopener">MAX</a>
+    </div>
+    <div class="warn">Не является лекарственным средством. Имеются противопоказания. Необходима консультация специалиста или лечащего врача.</div>
+    <div class="legal">
+      ООО «Кардионет» · ИНН 0278974239 · ОГРН 1220200030874<br>
+      Свидетельство о государственной регистрации NAM.01.07.01.003.R.000354.04.25 от 29.04.2025 г.<br>
+      Материалы разбора — только про упаковку страницы, не про медицину.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
