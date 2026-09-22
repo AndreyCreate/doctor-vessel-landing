@@ -96,6 +96,21 @@
   .comp h3{font-size:19px;margin-bottom:4px}
   .comp .mg{font-size:13px;color:var(--ink3);margin-bottom:10px}
   .comp ul{margin:0;padding-left:18px;color:var(--ink2);font-size:14.5px;line-height:1.55}
+  .comp2 .plain{margin:8px 0 14px;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .comp2 .plain b{color:var(--accent);font-weight:600}
+  .comp2 .tech{
+    font-size:12.5px;color:var(--ink3);line-height:1.5;padding-top:10px;
+    border-top:1px solid var(--line);margin-bottom:6px;
+  }
+  .comp2 .src{font-size:11.5px;color:var(--ink3)}
+  .comp2 .src a{color:var(--ink3)}
+  .notice-list{list-style:none;margin:16px 0 0;padding:0}
+  .notice-list li{
+    padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px;
+    line-height:1.5;color:var(--ink2);
+  }
+  .notice-list li:last-child{border-bottom:none}
+  .notice-list b{color:var(--ink);font-weight:600}
   .comp ul li{margin-bottom:3px}
   .footnote{font-size:13px;color:var(--ink3);line-height:1.5;margin-top:18px}
 
@@ -194,12 +209,27 @@
   .qz-quote cite a{color:var(--ink3)}
   .qz-note-inline{font-size:13.5px;color:var(--ink3);margin-bottom:14px}
   .qz-step-block{
-    background:var(--chip);border-radius:12px;padding:16px 18px;margin:18px 0 20px;
+    background:var(--chip);border-radius:12px;padding:16px 18px;margin:20px 0 4px;
   }
   .qz-step-block b{display:block;font-size:13px;color:var(--accent);margin-bottom:6px;letter-spacing:.02em}
   .qz-step-block p{margin:0;font-size:15px;line-height:1.5}
-  .qz-product{border-top:1px solid var(--line);padding-top:20px;margin-top:6px}
-  .qz-product p.lead2{font-size:14px;color:var(--ink2);margin:0 0 14px}
+  .qz-formula-h{font-size:16.5px;font-family:'Inter';font-weight:600;margin:22px 0 14px;color:var(--ink)}
+  .qz-comp{margin-bottom:12px;padding:18px 18px 16px}
+  .qz-comp h3{font-size:17px;margin-bottom:6px}
+  .qz-comp .plain{font-size:14.5px;margin:0 0 12px}
+  .qz-reported{
+    background:var(--bg);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px 6px;margin:18px 0;
+  }
+  .qz-reported b{display:block;font-size:13px;color:var(--accent);margin-bottom:4px;letter-spacing:.02em}
+  .qz-reported .notice-list li{font-size:14px;padding:10px 0}
+  .qz-product{
+    border:1px solid var(--line);border-radius:16px;padding:20px 18px;
+    margin:22px 0 0;background:var(--paper);
+  }
+  .qz-product-title{font-size:15.5px;font-weight:600;margin-bottom:4px}
+  .qz-product-price{font-family:'Fraunces';font-size:28px;font-weight:600;margin-bottom:14px}
+  .qz-disclaimer{font-size:11.5px;color:var(--ink3);line-height:1.45;margin:14px 0 0}
 </style>
 </head>
 <body>
@@ -273,40 +303,40 @@
   <div class="wrap">
     <div class="lab">Что внутри</div>
     <h2 class="title">Тройная формула</h2>
-    <p class="lead">Почему нельзя обойтись одним компонентом.</p>
+    <p class="lead">Три вещества — и зачем каждое нужно, его же словами из роликов, без терминов без перевода.</p>
     <div style="margin-top:24px">
-      <div class="comp">
+      <div class="comp comp2">
         <div class="num">1</div>
         <h3>Фукоидан</h3>
-        <div class="mg">60 мг · защищает изнутри</div>
-        <ul>
-          <li>способствует восстановлению гликокаликса — защитного слоя сосудов</li>
-          <li>помогает защитить сосудистую стенку от холестерина</li>
-          <li>создаёт условия для выработки оксида азота (NO)</li>
-        </ul>
+        <p class="plain">Вещество из бурых водорослей. Богдан объясняет так: у сосуда есть тончайший защитный слой — <b>гликокаликс</b> (это как броня толщиной в одну молекулу). Пока он цел, холестерин «бьётся о него и отскакивает». Фукоидан помогает латать проломы в этой броне.</p>
+        <div class="tech">в составе: Фукоидан, 60 мг · способствует восстановлению гликокаликса, защищает сосудистую стенку от холестерина</div>
+        <div class="src"><a href="https://www.instagram.com/reel/DcEbPuXMNLM/" target="_blank" rel="noopener">рилс 15.08.2026 · 4 833 просмотра</a> · <a href="https://doctorvessel.ru/" target="_blank" rel="noopener">doctorvessel.ru</a></div>
       </div>
-      <div class="comp">
+      <div class="comp comp2">
         <div class="num">2</div>
         <h3>L-Цитруллин</h3>
-        <div class="mg">500 мг · даёт материал</div>
-        <ul>
-          <li>служит источником для синтеза оксида азота</li>
-          <li>помогает сосудам вырабатывать достаточное количество NO</li>
-          <li>поддерживает нормальное расширение сосудов и кровоток</li>
-        </ul>
+        <p class="plain">Аминокислота — сырьё, из которого сосуд сам производит <b>оксид азота</b> (NO): это газ, от которого стенка сосуда расслабляется и кровь идёт свободнее. По словам Богдана, его вырабатывает <b>эндотелий</b> (внутренняя оболочка сосуда), но после 40 лет выработка снижается.</p>
+        <div class="tech">в составе: L-Цитруллин, 500 мг · служит источником для синтеза оксида азота (NO), поддерживает расширение сосудов</div>
+        <div class="src"><a href="https://www.instagram.com/reel/DYwWouEM86Y/" target="_blank" rel="noopener">рилс 25.05.2026 · 4 838 просмотров</a> · <a href="https://doctorvessel.ru/" target="_blank" rel="noopener">doctorvessel.ru</a></div>
       </div>
-      <div class="comp">
+      <div class="comp comp2">
         <div class="num">3</div>
         <h3>Ресвератрол</h3>
-        <div class="mg">100 мг · активирует выработку NO</div>
-        <ul>
-          <li>активирует фермент eNOS, отвечающий за синтез NO</li>
-          <li>помогает защитить молекулы NO от разрушения</li>
-          <li>снижает сосудистое воспаление</li>
-        </ul>
+        <p class="plain">Растительное вещество. Включает у сосуда фермент <b>eNOS</b> — это «станок», который производит тот же оксид азота, — и защищает готовый оксид азота от разрушения. Проще говоря: помогает сосудам дольше оставаться расслабленными.</p>
+        <div class="tech">в составе: Ресвератрол, 100 мг · активирует фермент eNOS, снижает сосудистое воспаление</div>
+        <div class="src"><a href="https://doctorvessel.ru/" target="_blank" rel="noopener">doctorvessel.ru</a></div>
       </div>
     </div>
-    <p class="footnote">Основано на самых востребованных в США формулах для поддержки эндотелия и гликокаликса.</p>
+    <p class="footnote">Основано на самых востребованных в США формулах для поддержки эндотелия (внутренней оболочки сосуда) и гликокаликса (его защитного слоя).</p>
+
+    <h3 style="margin-top:36px;font-size:19px">Что замечают люди</h3>
+    <p class="footnote" style="margin-top:0">Из опроса 108 покупателей Doctor Vessel. Результаты индивидуальны — это не гарантия, а то, что они сами сообщили.</p>
+    <ul class="notice-list">
+      <li><b>Больше энергии в течение дня</b> — 76% отметили прилив энергии и снижение усталости</li>
+      <li><b>Меньше мёрзнут руки и ноги</b> — 63% перестали постоянно мёрзнуть</li>
+      <li><b>Легче переносят нагрузки</b> — 58% отметили, что физические и умственные нагрузки даются легче</li>
+      <li><b>Мужчины отмечают улучшение эрекции</b> — 64% мужчин из опроса</li>
+    </ul>
   </div>
 </section>
 
@@ -472,13 +502,48 @@
       html += '<div class="qz-quote"><p>«' + esc(q.text) + '»</p>' +
         '<cite><a href="' + q.link + '" target="_blank" rel="noopener">' + esc(q.source) + '</a></cite></div>';
     });
-    html += '<div class="qz-step-block"><b>Первый шаг</b><p>' + esc(c.firstStep) + '</p></div>';
+
+    // ГЛАВНЫЙ блок: что в формуле работает на эту ситуацию
+    html += '<h4 class="qz-formula-h">' + esc(c.why) + '</h4>';
+    (c.formula || []).forEach(function(key){
+      var comp = QUIZ_COMPONENTS[key];
+      html += '<div class="comp2 qz-comp">' +
+        '<h3>' + esc(comp.name) + '</h3>' +
+        '<p class="plain">' + esc(comp.plain) + '</p>' +
+        '<div class="tech">в составе: ' + esc(comp.name) + ', ' + esc(comp.mg) + ' · ' + esc(comp.tech) + '</div>' +
+        '<div class="src"><a href="' + comp.link + '" target="_blank" rel="noopener">' + esc(comp.source) + '</a></div>' +
+      '</div>';
+    });
+    if ((c.formulaOther || []).length){
+      var otherNames = c.formulaOther.map(function(key){
+        var comp = QUIZ_COMPONENTS[key];
+        return comp.name + ' (' + comp.mg + ')';
+      }).join(', ');
+      html += '<p class="qz-note-inline">Также в составе: ' + esc(otherNames) + ' — без отдельного объяснения под эту жалобу, полный состав в разделе «Тройная формула» выше.</p>';
+    }
+
+    // Что реально сообщают покупатели — только по делу к этой жалобе
+    if ((c.reported || []).length){
+      html += '<div class="qz-reported"><b>Что замечают покупатели</b><ul class="notice-list">';
+      c.reported.forEach(function(key){
+        var r = QUIZ_REPORTED[key];
+        html += '<li><b>' + esc(r.text) + '</b> — ' + esc(r.pct) + ' ' + esc(r.detail) + '</li>';
+      });
+      html += '</ul><p class="qz-note-inline">Опрос 108 покупателей Doctor Vessel. Результаты индивидуальны.</p></div>';
+    }
+
+    // Продукт — прямо в результате
     html += '<div class="qz-product">' +
-      '<p class="lead2">Если хотите поддерживать сосуды курсом — вот что предлагает Doctor Vessel: тройная формула, 60 капсул, 1790 ₽.</p>' +
+      '<div class="qz-product-title">' + esc(QUIZ_DATA.product.title) + '</div>' +
+      '<div class="qz-product-price">' + esc(QUIZ_DATA.product.price) + '</div>' +
       '<div class="btn-row two">' +
-        '<a class="btn btn-primary" href="https://www.ozon.ru/product/doctor-vessel-doktor-vessel-formula-podderzhki-sosudov-kompleksnaya-podderzhka-zdorovya-serdechno-2628980064/" target="_blank" rel="noopener">Заказать на Ozon</a>' +
-        '<a class="btn btn-ghost" href="https://www.wildberries.ru/catalog/629537105/detail.aspx" target="_blank" rel="noopener">Заказать на Wildberries</a>' +
-      '</div></div>';
+        '<a class="btn btn-primary" href="' + QUIZ_DATA.product.ozon + '" target="_blank" rel="noopener">Заказать на Ozon</a>' +
+        '<a class="btn btn-ghost" href="' + QUIZ_DATA.product.wb + '" target="_blank" rel="noopener">Заказать на Wildberries</a>' +
+      '</div>' +
+      '<p class="qz-disclaimer">' + esc(QUIZ_DATA.product.disclaimer) + '</p>' +
+    '</div>';
+
+    html += '<div class="qz-step-block"><b>Первый шаг</b><p>' + esc(c.firstStep) + '</p></div>';
     document.getElementById("quizResult").innerHTML = html;
   }
 
