@@ -161,6 +161,45 @@
 
   h2.title{font-size:26px;line-height:1.24;margin-bottom:8px}
   .lead{font-size:15.5px;color:var(--ink2);line-height:1.5;margin:0 0 6px}
+
+  /* QUIZ */
+  .quiz-box{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px 20px 24px;margin-top:24px}
+  .qz-progress{display:flex;gap:6px;margin-bottom:20px}
+  .qz-dot{height:4px;flex:1;border-radius:2px;background:var(--line)}
+  .qz-dot.active,.qz-dot.done{background:var(--accent)}
+  .qz-q{font-size:19px;margin-bottom:16px}
+  .qz-opts{display:flex;flex-direction:column;gap:10px}
+  .qz-opt{
+    display:block;width:100%;text-align:left;padding:14px 16px;border-radius:12px;
+    border:1px solid var(--line);background:var(--bg);font-family:'Inter';font-size:15px;
+    color:var(--ink);cursor:pointer;transition:border-color .15s ease,background .15s ease;
+  }
+  .qz-opt:active{transform:scale(.99)}
+  .qz-opt:hover{border-color:var(--accent)}
+  .qz-back{
+    margin-top:16px;background:none;border:none;color:var(--ink3);font-family:'Inter';
+    font-size:14px;cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:2px;
+  }
+  .qz-age-note{
+    background:var(--chip);border-radius:12px;padding:14px 16px;font-size:14px;
+    line-height:1.5;color:var(--ink2);margin-bottom:18px;
+  }
+  .qz-age-note cite{display:block;margin-top:8px;font-size:12.5px;color:var(--ink3);font-style:normal}
+  .qz-result-title{font-size:20px;margin-bottom:14px}
+  .qz-quote{
+    border-left:3px solid var(--accent);padding:2px 0 2px 16px;margin-bottom:16px;
+  }
+  .qz-quote p{margin:0;font-size:15px;line-height:1.5;color:var(--ink)}
+  .qz-quote cite{display:block;margin-top:8px;font-size:12.5px;color:var(--ink3);font-style:normal}
+  .qz-quote cite a{color:var(--ink3)}
+  .qz-note-inline{font-size:13.5px;color:var(--ink3);margin-bottom:14px}
+  .qz-step-block{
+    background:var(--chip);border-radius:12px;padding:16px 18px;margin:18px 0 20px;
+  }
+  .qz-step-block b{display:block;font-size:13px;color:var(--accent);margin-bottom:6px;letter-spacing:.02em}
+  .qz-step-block p{margin:0;font-size:15px;line-height:1.5}
+  .qz-product{border-top:1px solid var(--line);padding-top:20px;margin-top:6px}
+  .qz-product p.lead2{font-size:14px;color:var(--ink2);margin:0 0 14px}
 </style>
 </head>
 <body>
@@ -174,8 +213,38 @@
     <p class="sub">Первый в России комплекс для поддержки сосудов на всех уровнях.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="https://www.ozon.ru/product/doctor-vessel-doktor-vessel-formula-podderzhki-sosudov-kompleksnaya-podderzhka-zdorovya-serdechno-2628980064/" target="_blank" rel="noopener">Смотреть на Ozon — 1790 ₽</a>
+      <a class="btn btn-ghost" href="#quiz" id="quizCta">Проверить свою ситуацию</a>
     </div>
     <p class="price-note">Тоже есть на Wildberries и на doctorvessel.ru</p>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="grey">
+  <div class="wrap">
+    <div class="lab">2 минуты</div>
+    <h2 class="title">Что Богдан говорит про вашу ситуацию</h2>
+    <p class="lead">Два коротких вопроса — дальше цитаты из его же роликов и первый шаг, который он сам советует. Без обещаний, что добавка вылечит.</p>
+
+    <div class="quiz-box" id="quizBox">
+      <div class="qz-progress"><span class="qz-dot active" data-step="1"></span><span class="qz-dot" data-step="2"></span><span class="qz-dot" data-step="3"></span></div>
+
+      <div class="qz-step" data-step="1">
+        <h3 class="qz-q">Ваш возраст</h3>
+        <div class="qz-opts" id="ageOpts"></div>
+      </div>
+
+      <div class="qz-step" data-step="2" hidden>
+        <h3 class="qz-q">Что беспокоит больше всего</h3>
+        <div class="qz-opts" id="complaintOpts"></div>
+        <button class="qz-back" data-back="1">← назад</button>
+      </div>
+
+      <div class="qz-step" data-step="3" hidden>
+        <div id="quizResult"></div>
+        <button class="qz-back" data-back="2" style="margin-top:18px">← изменить ответы</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -345,6 +414,94 @@
     </div>
   </div>
 </footer>
+
+<script src="quiz_data.js"></script>
+<script>
+(function(){
+  var state = { age: null, complaint: null };
+  var box = document.getElementById("quizBox");
+
+  function esc(s){ return s.replace(/[&<>"']/g, function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+
+  function renderAgeOpts(){
+    var wrap = document.getElementById("ageOpts");
+    wrap.innerHTML = "";
+    QUIZ_DATA.ageGroups.forEach(function(a){
+      var b = document.createElement("button");
+      b.className = "qz-opt";
+      b.type = "button";
+      b.textContent = a.label;
+      b.addEventListener("click", function(){
+        state.age = a.id;
+        goStep(2);
+      });
+      wrap.appendChild(b);
+    });
+  }
+
+  function renderComplaintOpts(){
+    var wrap = document.getElementById("complaintOpts");
+    wrap.innerHTML = "";
+    QUIZ_DATA.complaints.forEach(function(c){
+      var b = document.createElement("button");
+      b.className = "qz-opt";
+      b.type = "button";
+      b.textContent = c.label;
+      b.addEventListener("click", function(){
+        state.complaint = c.id;
+        renderResult();
+        goStep(3);
+      });
+      wrap.appendChild(b);
+    });
+  }
+
+  function renderResult(){
+    var c = QUIZ_DATA.complaints.find(function(x){ return x.id === state.complaint; });
+    var showAgeNote = state.age && state.age !== "young";
+    var html = "";
+    html += '<h3 class="qz-result-title">Что Богдан говорит про вашу ситуацию</h3>';
+    if (showAgeNote){
+      html += '<div class="qz-age-note">' + esc(QUIZ_DATA.ageNote.text) +
+        '<cite><a href="' + QUIZ_DATA.ageNote.link + '" target="_blank" rel="noopener">' + esc(QUIZ_DATA.ageNote.source) + '</a></cite></div>';
+    }
+    if (c.note){
+      html += '<p class="qz-note-inline">' + esc(c.note) + '</p>';
+    }
+    c.quotes.forEach(function(q){
+      html += '<div class="qz-quote"><p>«' + esc(q.text) + '»</p>' +
+        '<cite><a href="' + q.link + '" target="_blank" rel="noopener">' + esc(q.source) + '</a></cite></div>';
+    });
+    html += '<div class="qz-step-block"><b>Первый шаг</b><p>' + esc(c.firstStep) + '</p></div>';
+    html += '<div class="qz-product">' +
+      '<p class="lead2">Если хотите поддерживать сосуды курсом — вот что предлагает Doctor Vessel: тройная формула, 60 капсул, 1790 ₽.</p>' +
+      '<div class="btn-row two">' +
+        '<a class="btn btn-primary" href="https://www.ozon.ru/product/doctor-vessel-doktor-vessel-formula-podderzhki-sosudov-kompleksnaya-podderzhka-zdorovya-serdechno-2628980064/" target="_blank" rel="noopener">Заказать на Ozon</a>' +
+        '<a class="btn btn-ghost" href="https://www.wildberries.ru/catalog/629537105/detail.aspx" target="_blank" rel="noopener">Заказать на Wildberries</a>' +
+      '</div></div>';
+    document.getElementById("quizResult").innerHTML = html;
+  }
+
+  function goStep(n){
+    document.querySelectorAll(".qz-step").forEach(function(s){
+      s.hidden = (parseInt(s.dataset.step,10) !== n);
+    });
+    document.querySelectorAll(".qz-dot").forEach(function(d){
+      var ds = parseInt(d.dataset.step,10);
+      d.classList.toggle("active", ds === n);
+      d.classList.toggle("done", ds < n);
+    });
+    box.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  document.querySelectorAll(".qz-back").forEach(function(btn){
+    btn.addEventListener("click", function(){ goStep(parseInt(btn.dataset.back,10)); });
+  });
+
+  renderAgeOpts();
+  renderComplaintOpts();
+})();
+</script>
 
 </body>
 </html>
