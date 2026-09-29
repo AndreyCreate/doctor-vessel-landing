@@ -253,8 +253,8 @@
 <section id="quiz" class="grey">
   <div class="wrap">
     <div class="lab">2 минуты</div>
-    <h2 class="title">Что Богдан говорит про вашу ситуацию</h2>
-    <p class="lead">Два коротких вопроса — дальше цитаты из его же роликов и первый шаг, который он сам советует. Без обещаний, что добавка вылечит.</p>
+    <h2 class="title">Что может влиять на ваше самочувствие</h2>
+    <p class="lead">Ответьте на 2 вопроса о вашем состоянии и сразу получите результат: возможные причины и что делать дальше. Это не диагноз и не замена консультации врача.</p>
 
     <div class="quiz-box" id="quizBox">
       <div class="qz-progress"><span class="qz-dot active" data-step="1"></span><span class="qz-dot" data-step="2"></span><span class="qz-dot" data-step="3"></span></div>
@@ -490,17 +490,17 @@
     var c = QUIZ_DATA.complaints.find(function(x){ return x.id === state.complaint; });
     var showAgeNote = state.age && state.age !== "young";
     var html = "";
-    html += '<h3 class="qz-result-title">Что Богдан говорит про вашу ситуацию</h3>';
+    html += '<h3 class="qz-result-title">Что может влиять на ваше самочувствие</h3>';
     if (showAgeNote){
       html += '<div class="qz-age-note">' + esc(QUIZ_DATA.ageNote.text) +
-        '<cite><a href="' + QUIZ_DATA.ageNote.link + '" target="_blank" rel="noopener">' + esc(QUIZ_DATA.ageNote.source) + '</a></cite></div>';
+        '</div>';
     }
     if (c.note){
       html += '<p class="qz-note-inline">' + esc(c.note) + '</p>';
     }
     c.quotes.forEach(function(q){
       html += '<div class="qz-quote"><p>«' + esc(q.text) + '»</p>' +
-        '<cite><a href="' + q.link + '" target="_blank" rel="noopener">' + esc(q.source) + '</a></cite></div>';
+        '<cite>Богдан Олейник, сосудистый хирург</cite></div>';
     });
 
     // ГЛАВНЫЙ блок: что в формуле работает на эту ситуацию
@@ -511,7 +511,6 @@
         '<h3>' + esc(comp.name) + '</h3>' +
         '<p class="plain">' + esc(comp.plain) + '</p>' +
         '<div class="tech">в составе: ' + esc(comp.name) + ', ' + esc(comp.mg) + ' · ' + esc(comp.tech) + '</div>' +
-        '<div class="src"><a href="' + comp.link + '" target="_blank" rel="noopener">' + esc(comp.source) + '</a></div>' +
       '</div>';
     });
     if ((c.formulaOther || []).length){
